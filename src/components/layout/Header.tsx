@@ -28,7 +28,7 @@ const menuGroups = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white">
-      <div className="flex items-center justify-between h-14 md:h-20 px-[20px] md:px-8 lg:px-16">
+      <div className="flex items-center justify-between h-14 md:h-20 px-[20px] md:px-8 lg:px-[120px]">
         <Link href="/" className="flex items-center">
           <Image src="/logo.svg" alt="Native Teams" width={158} height={29} />
         </Link>
