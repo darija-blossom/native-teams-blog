@@ -1,10 +1,10 @@
-// NewPosts.tsx
 "use client";
 
 import { useMemo, useState } from "react";
 import PostCard from "@/shared-ui/post-card/PostCard";
 import Typography from "@/shared-ui/typography/Typography";
 import PaginationBar from "@/shared-ui/pagination-bar/PaginationBar";
+import { Article } from "@/types/article";
 
 const mockPosts = Array.from({ length: 28 }, (_, i) => ({
   id: i + 1,
@@ -16,9 +16,15 @@ const mockPosts = Array.from({ length: 28 }, (_, i) => ({
 
 const PAGE_SIZE = 9; // 3 x 3
 
-export default function NewPosts() {
+interface NewPostProps {
+  articles: Article[];
+}
+
+export default function NewPosts({ articles }: NewPostProps) {
   const [page, setPage] = useState(1);
   const totalPages = Math.max(1, Math.ceil(mockPosts.length / PAGE_SIZE));
+
+  console.log("Articles from new post", articles);
 
   const pageItems = useMemo(() => {
     const start = (page - 1) * PAGE_SIZE;

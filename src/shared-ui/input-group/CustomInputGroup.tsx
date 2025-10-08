@@ -25,10 +25,7 @@ export default function CustomInputGroup({
     <InputGroupButton
       className={cn(
         "rounded-full font-semibold px-6 h-[49px] transition-colors duration-200",
-        "w-full sm:w-auto",
-        isSearch
-          ? "bg-[#5152FB] text-white hover:bg-[#3b3ccf]"
-          : "bg-[#5B43F1] text-white hover:bg-[#4a36c3]"
+        "w-full sm:w-auto bg-[#5152FB] text-white hover:bg-[#303094] hover:text-white"
       )}
     >
       {buttonLabel}
