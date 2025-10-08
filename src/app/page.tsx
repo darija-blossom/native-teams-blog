@@ -1,9 +1,11 @@
 import HeroSection from "@/components/sections/HeroSection";
+import Posts from "@/components/sections/posts/Posts";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       <HeroSection />
-    </main>
+      <Posts />
+    </div>
   );
 }

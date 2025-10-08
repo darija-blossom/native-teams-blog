@@ -22,7 +22,7 @@ export default function DecorativeIcons() {
       </div>
       <div
         className="hidden sm:block absolute 
-            top-[50.8%] left-[19.29%] 
+            top-[30.8%] left-[19.29%] 
             w-[30px] h-[30px] md:w-[50px] md:h-[50px]
             opacity-60"
       >
