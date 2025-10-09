@@ -6,6 +6,7 @@ import {
   InputGroupButton,
 } from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
+import ThankYouPopover from "../popovers/ThankYouPopover";
 
 interface CustomInputGroupProps {
   title?: string; // placeholder text
@@ -21,16 +22,19 @@ export default function CustomInputGroup({
   className,
 }: CustomInputGroupProps) {
   const isSearch = variant === "search";
-  const button = (
-    <InputGroupButton
-      className={cn(
-        "rounded-full font-semibold px-6 h-[49px] transition-colors duration-200",
-        "w-full sm:w-auto bg-[#5152FB] text-white hover:bg-[#303094] hover:text-white"
-      )}
-    >
-      {buttonLabel}
-    </InputGroupButton>
-  );
+  const button =
+    variant === "signup" ? (
+      <ThankYouPopover />
+    ) : (
+      <InputGroupButton
+        className={cn(
+          "rounded-full font-semibold px-6 h-[49px] transition-colors duration-200",
+          "w-full sm:w-auto bg-[#5152FB] text-white hover:bg-[#303094]"
+        )}
+      >
+        {buttonLabel}
+      </InputGroupButton>
+    );
 
   return (
     <>

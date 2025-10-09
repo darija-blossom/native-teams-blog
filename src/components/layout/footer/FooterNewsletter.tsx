@@ -6,7 +6,7 @@ import Typography from "@/shared-ui/typography/Typography";
 
 export default function FooterNewsletter() {
   return (
-    <section className="w-full bg-[#0A0A2B]">
+    <section className="w-full bg-[#0A0A2B] h-[446px]">
       <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-6 lg:px-0 py-12 md:py-16">
         <div className="flex flex-col items-center text-center gap-6">
           <Typography
