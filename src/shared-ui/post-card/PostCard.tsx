@@ -42,7 +42,7 @@ export default function PostCard({
       <CardHeader className="p-0">
         <div className="relative w-full aspect-[4/3] bg-[#E1E1E1] max-h-[221px]">
           <Image
-            src={multimedia || "/assets/featured-placeholder.png"}
+            src={multimedia || "/assets/placeholder.png"}
             alt={title}
             fill
             className="object-cover"

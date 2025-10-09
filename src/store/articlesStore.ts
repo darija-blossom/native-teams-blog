@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 import { Article } from "@/types/article";
 
 interface ArticlesState {
@@ -8,47 +7,44 @@ interface ArticlesState {
   totalPages: number;
   isLoading: boolean;
   error: string | null;
+  selectedArticle: Article | null;
+  setSelectedArticle: (article: Article | null) => void;
+  addArticle: (article: Article) => void;
   fetchArticles: (page?: number) => Promise<void>;
 }
 
-export const useArticlesStore = create<ArticlesState>()(
-  persist(
-    (set) => ({
-      articles: [],
-      page: 1,
-      totalPages: 1,
-      isLoading: false,
-      error: null,
+export const useArticlesStore = create<ArticlesState>((set, get) => ({
+  articles: [],
+  page: 1,
+  totalPages: 1,
+  isLoading: false,
+  error: null,
+  selectedArticle: null,
 
-      fetchArticles: async (page = 1) => {
-        try {
-          set({ isLoading: true, error: null });
+  setSelectedArticle: (article) => set({ selectedArticle: article }),
 
-          const res = await fetch(`/api/nyt?page=${page}`);
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  addArticle: (article) => {
+    const { articles } = get();
+    const exists = articles.some((a) => a.id === article.id);
+    if (!exists) set({ articles: [...articles, article] });
+  },
 
-          const data = await res.json();
-          const articles = data.articles ?? [];
-
-          set({
-            articles,
-            page,
-            totalPages: Math.ceil(100 / 9), // adjust dynamically later if needed
-            isLoading: false,
-          });
-        } catch (err: unknown) {
-          const errorMessage = err instanceof Error ? err.message : String(err);
-          set({ error: errorMessage, isLoading: false });
-        }
-      },
-    }),
-    {
-      name: "articles-storage",
-      partialize: (state) => ({
-        articles: state.articles,
-        page: state.page,
-        totalPages: state.totalPages,
-      }),
+  fetchArticles: async (page = 1) => {
+    try {
+      set({ isLoading: true, error: null });
+      const res = await fetch(`/api/nyt?page=${page}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const articles = data.articles ?? [];
+      set({
+        articles,
+        page,
+        totalPages: Math.ceil(100 / 9),
+        isLoading: false,
+      });
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      set({ error: errorMessage, isLoading: false });
     }
-  )
-);
+  },
+}));
