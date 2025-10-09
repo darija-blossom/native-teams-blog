@@ -48,7 +48,6 @@ export default function HeroSection() {
         Resources, Tips and Tricks About the Modern Way of Working
       </Typography>
 
-      {/* Single input + dropdown */}
       <div className="relative w-full md:max-w-lg mt-8">
         <CustomInputGroup
           variant="search"

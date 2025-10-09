@@ -52,7 +52,7 @@ export default function FeaturedPost({ featuredArticle }: FeaturedPostProps) {
         </Typography>
 
         <Link
-          href="#"
+          href={`/post/${encodeURIComponent(featuredArticle.slug)}`}
           className={
             "group inline-flex items-center gap-2 text-[#5152FB] hover:underline transition-colors duration-200"
           }

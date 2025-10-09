@@ -10,7 +10,7 @@ export default function NewPosts() {
 
   return (
     <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-10 items-center">
-      <Typography variant="h3" className="text-left text-[#1E1E1E]">
+      <Typography variant="h3" className="text-left text-[#1E1E1E] self-start">
         News posts
       </Typography>
 
