@@ -33,12 +33,6 @@ export default function PostPage() {
       <PostContentSection article={article} />
 
       <AuthorSection authorName={article.byline ?? undefined} />
-
-      {/* Info Section */}
-      <section className="max-w-[800px] mx-auto px-6 pt-8 border-t border-gray-200 text-sm text-gray-600">
-        <p>Section: {article.section}</p>
-        <p>Published: {new Date(article.publishedAt).toLocaleDateString()}</p>
-      </section>
     </article>
   );
 }
