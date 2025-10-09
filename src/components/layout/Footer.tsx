@@ -22,25 +22,23 @@ function FooterCta() {
   return (
     <section className="w-full bg-[#EAF0FF]">
       <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-6 lg:px-0 py-12 md:py-16">
-        <div className="rounded-[12px] border border-[#D9E2FF] bg-white/50 p-6 md:p-8 shadow-sm">
-          <div className="flex flex-col items-center text-center gap-3 md:gap-4">
-            <Typography variant="h3" className="text-[#1E1E1E] md:text-[32px]">
-              Explore Native Teams today
-            </Typography>
+        <div className="flex flex-col items-center text-center gap-3 md:gap-4">
+          <Typography variant="h3" className="text-[#1E1E1E] md:text-[32px]">
+            Explore Native Teams today
+          </Typography>
 
-            <Typography variant="p" className="max-w-3xl text-[#1E1E1E]/80">
-              Unlock the full potential of your teams and elevate your business
-              or personal growth with Native Teams. Explore our platform today
-              and start your journey towards success.
-            </Typography>
+          <Typography variant="p" className="max-w-3xl text-[#1E1E1E]/80">
+            Unlock the full potential of your teams and elevate your business or
+            personal growth with Native Teams. Explore our platform today and
+            start your journey towards success.
+          </Typography>
 
-            <Button
-              className="mt-2 rounded-full px-6 py-2 text-white bg-[#5152FB] hover:bg-[#3F40D6]"
-              asChild
-            >
-              <Link href="#learn-more">Learn more</Link>
-            </Button>
-          </div>
+          <Button
+            className="mt-2 rounded-full px-6 py-2 text-white bg-[#5152FB] hover:bg-[#3F40D6]"
+            asChild
+          >
+            <Link href="#learn-more">Learn more</Link>
+          </Button>
         </div>
       </div>
     </section>
@@ -52,46 +50,44 @@ function FooterNewsletter() {
   return (
     <section className="w-full bg-[#0F0E2E]">
       <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-6 lg:px-0 py-12 md:py-16">
-        <div className="rounded-[12px] border border-[#2C2B57] bg-[#141343] p-6 md:p-8">
-          <div className="flex flex-col items-center text-center gap-6">
-            <Typography
-              variant="h3"
-              className="text-white md:text-[32px] font-bold leading-[100%]"
-            >
-              Never miss out our{" "}
-              <span className="text-[#7AA7FF]">latest news</span>
-            </Typography>
+        <div className="flex flex-col items-center text-center gap-6">
+          <Typography
+            variant="h3"
+            className="text-white md:text-[32px] font-bold leading-[100%]"
+          >
+            Never miss out our{" "}
+            <span className="text-[#7AA7FF]">latest news</span>
+          </Typography>
 
-            {/* form */}
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex w-full max-w-[560px] items-center gap-3"
+          {/* form */}
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="flex w-full max-w-[560px] items-center gap-3"
+          >
+            <Input
+              type="email"
+              placeholder="Email address"
+              className={cn(
+                "h-10 md:h-11 rounded-[8px] bg-transparent text-white",
+                "border border-[#3D3C6E] placeholder:text-white/50"
+              )}
+            />
+            <Button
+              type="submit"
+              className="h-10 md:h-11 rounded-full px-5 bg-[#5152FB] hover:bg-[#3F40D6] text-white"
             >
-              <Input
-                type="email"
-                placeholder="Email address"
-                className={cn(
-                  "h-10 md:h-11 rounded-[8px] bg-transparent text-white",
-                  "border border-[#3D3C6E] placeholder:text-white/50"
-                )}
-              />
-              <Button
-                type="submit"
-                className="h-10 md:h-11 rounded-full px-5 bg-[#5152FB] hover:bg-[#3F40D6] text-white"
-              >
-                Sign up
-              </Button>
-            </form>
+              Sign up
+            </Button>
+          </form>
 
-            <Typography variant="small" className="text-white/70 max-w-[640px]">
-              By submitting this form, you will receive emails from Native
-              Teams. For details, view our{" "}
-              <Link href="#" className="underline">
-                Privacy Policy
-              </Link>
-              .
-            </Typography>
-          </div>
+          <Typography variant="small" className="text-white/70 max-w-[640px]">
+            By submitting this form, you will receive emails from Native Teams.
+            For details, view our{" "}
+            <Link href="#" className="underline">
+              Privacy Policy
+            </Link>
+            .
+          </Typography>
         </div>
       </div>
     </section>

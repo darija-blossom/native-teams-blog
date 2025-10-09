@@ -1,8 +1,11 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useArticlesStore } from "@/store/articlesStore";
+import Link from "next/link";
 import Typography from "@/shared-ui/typography/Typography";
+import { useArticlesStore } from "@/store/articlesStore";
+import { useParams } from "next/navigation";
+import PostContentSection from "./PostContentSection";
+import AuthorSection from "./AuthorSection";
 
 export default function PostPage() {
   const params = useParams<{ slug: string }>();
@@ -12,16 +15,30 @@ export default function PostPage() {
 
   if (!article)
     return (
-      <main className="flex justify-center items-center h-screen text-2xl text-gray-500">
-        Article not found
-      </main>
+      <section className="flex justify-center items-center h-screen text-gray-500">
+        Article not found.
+      </section>
     );
 
   return (
-    <main className="max-w-3xl mx-auto py-20 px-6">
-      <Typography variant="h2" className="text-[#1E1E1E] font-bold mb-6">
-        {article.title}
-      </Typography>
-    </main>
+    <article className="w-full flex flex-col gap-16 pb-20">
+      {/* Breadcrumb */}
+      <div className="w-[1200px] mx-auto px-6 self-start">
+        <Typography variant="p" className="text-sm text-[#5152FB]">
+          <Link href="/">News</Link> &nbsp;/&nbsp;{" "}
+          <span className="text-[#1E1E1E]">{article.title}</span>
+        </Typography>
+      </div>
+
+      <PostContentSection article={article} />
+
+      <AuthorSection authorName={article.byline ?? undefined} />
+
+      {/* Info Section */}
+      <section className="max-w-[800px] mx-auto px-6 pt-8 border-t border-gray-200 text-sm text-gray-600">
+        <p>Section: {article.section}</p>
+        <p>Published: {new Date(article.publishedAt).toLocaleDateString()}</p>
+      </section>
+    </article>
   );
 }
