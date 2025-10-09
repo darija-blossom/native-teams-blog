@@ -41,20 +41,15 @@ export default function FeaturedPost({ featuredArticle }: FeaturedPostProps) {
           </Typography>
         </BlogBadge>
 
-        {/* Title */}
         <Typography
           variant="h3"
           className="text-[#1E1E1E] text-[32px] font-bold"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          {featuredArticle.title}
         </Typography>
 
-        {/* Description */}
         <Typography variant="p" className="text-[#1E1E1E]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Metus
-          aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices.
-          Ornare quam viverra orci sagittis eu volutpat odio.
+          {featuredArticle.abstract}
         </Typography>
 
         <Link
