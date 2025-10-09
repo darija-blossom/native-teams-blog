@@ -6,16 +6,24 @@ import Typography from "@/shared-ui/typography/Typography";
 import PaginationBar from "@/shared-ui/pagination-bar/PaginationBar";
 
 export default function NewPosts() {
-  const { articles, page, totalPages, fetchArticles } = useArticlesStore();
+  const {
+    page,
+    totalPages,
+    fetchArticles,
+    activeCategory,
+    getArticlesBySection,
+  } = useArticlesStore();
+
+  const filteredArticles = getArticlesBySection(activeCategory, page);
 
   return (
     <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-10 items-center">
       <Typography variant="h3" className="text-left text-[#1E1E1E] self-start">
-        News posts
+        {activeCategory === "All" ? "News posts" : activeCategory}
       </Typography>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 [&>*]:h-full">
-        {articles.map((post) => (
+        {filteredArticles.map((post) => (
           <PostCard
             key={post.id}
             title={post.title}
