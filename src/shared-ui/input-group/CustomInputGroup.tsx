@@ -38,7 +38,7 @@ export default function CustomInputGroup({
         className={cn(
           "!block sm:!flex sm:items-center sm:gap-0",
           "w-full min-h-[49px] h-[49px] rounded-full overflow-hidden",
-          isSearch ? "bg-[#F0F2F7]" : "bg-white/10",
+          "bg-[#F0F2F7]",
           className
         )}
       >
