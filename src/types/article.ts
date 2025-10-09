@@ -25,6 +25,7 @@ export type NYTDoc = {
 
 export type Article = {
   id: string;
+  slug: string;
   title: string;
   abstract: string;
   url: string;

@@ -20,7 +20,7 @@ export default function NewPosts() {
             key={post.id}
             title={post.title}
             multimedia={post.multimedia ?? undefined}
-            href={post.url}
+            slug={post.slug}
           />
         ))}
       </div>

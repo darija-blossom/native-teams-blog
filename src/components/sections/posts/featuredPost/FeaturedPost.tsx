@@ -10,7 +10,6 @@ interface FeaturedPostProps {
 }
 
 export default function FeaturedPost({ featuredArticle }: FeaturedPostProps) {
-  console.log("Featured", featuredArticle);
   return (
     <div
       className={cn(

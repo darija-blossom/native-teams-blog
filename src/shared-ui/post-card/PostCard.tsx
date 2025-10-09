@@ -13,20 +13,20 @@ import {
 } from "@/components/ui/card";
 
 interface PostCardProps {
+  slug: string;
   title: string;
   description?: string;
   multimedia?: string;
   readTime?: string;
-  href?: string;
   className?: string;
 }
 
 export default function PostCard({
+  slug,
   title,
   description,
   multimedia,
   readTime = "6 min read",
-  href = "#",
   className,
 }: PostCardProps) {
   return (
@@ -58,7 +58,10 @@ export default function PostCard({
       </CardHeader>
 
       <CardContent className="flex flex-col gap-2 px-4">
-        <Link href={href} aria-label={`Open post: ${title}`}>
+        <Link
+          href={`/post/${encodeURIComponent(slug)}`}
+          aria-label={`Open post: ${title}`}
+        >
           <Typography
             variant="h4"
             className="text-[#1E1E1E] text-[18px] font-semibold leading-[130%] line-clamp-2 hover:underline"
@@ -67,19 +70,19 @@ export default function PostCard({
           </Typography>
         </Link>
 
-        {description ? (
+        {description && (
           <Typography
             variant="p"
             className="text-[#1E1E1E]/80 text-[15px] leading-[150%] line-clamp-2"
           >
             {description}
           </Typography>
-        ) : null}
+        )}
       </CardContent>
 
-      <CardFooter>
+      <CardFooter className="mt-auto">
         <Link
-          href={href}
+          href={`/post/${encodeURIComponent(slug)}`}
           className="group inline-flex items-center gap-1 text-[#5152FB] font-medium text-[15px] hover:underline"
           aria-label={`Read more: ${title}`}
         >

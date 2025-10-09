@@ -27,6 +27,7 @@ export async function GET(req: Request) {
     const res = await fetch(`${BASE}?${params.toString()}`, {
       cache: "no-store",
     });
+
     if (!res.ok) {
       const msg = await res.text().catch(() => "");
       return NextResponse.json(
@@ -38,9 +39,17 @@ export async function GET(req: Request) {
     const raw = (await res.json()) as { response?: { docs?: NYTDoc[] } };
     const docs: NYTDoc[] = raw.response?.docs ?? [];
 
-    const articles: Article[] = docs.slice(0, limit).map(
-      (d): Article => ({
+    const articles: Article[] = docs.slice(0, limit).map((d): Article => {
+      // Generate a clean, readable slug
+      const slug =
+        d.headline?.main
+          ?.toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)+/g, "") || d._id;
+
+      return {
         id: d._id,
+        slug,
         title: d.headline?.main ?? "",
         abstract: d.abstract ?? d.lead_paragraph ?? "",
         url: d.web_url,
@@ -48,12 +57,13 @@ export async function GET(req: Request) {
         subsection: d.subsection_name ?? null,
         byline: d.byline?.original ?? null,
         publishedAt: d.pub_date,
-        multimedia: pickNYTThumbnail(d.multimedia), // ← thumbnail > default > null
-      })
-    );
+        multimedia: pickNYTThumbnail(d.multimedia),
+      };
+    });
 
     return NextResponse.json({ articles });
   } catch (err) {
+    console.error(err);
     return NextResponse.json({ error: "Internal error" }, { status: 500 });
   }
 }
