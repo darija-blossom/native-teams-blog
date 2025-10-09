@@ -77,7 +77,6 @@ export default function PostCard({
         ) : null}
       </CardContent>
 
-      {/* Footer not used in previous style; omit to keep spacing identical */}
       <CardFooter>
         <Link
           href={href}
