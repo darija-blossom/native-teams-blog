@@ -57,7 +57,6 @@ export default function HeroSection() {
           onSearch={(val) => setQuery(val)}
         />
 
-        {/* Dropdown appears below input */}
         {query.length > 2 && (
           <div className="absolute top-[60px] left-0 w-full z-20 bg-white border border-gray-200 rounded-lg shadow-lg">
             <Command className="rounded-lg border-none shadow-none">
