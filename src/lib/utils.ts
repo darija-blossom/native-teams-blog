@@ -20,7 +20,7 @@ export function pickNYTThumbnail(
   // Case A: object with { thumbnail, default }
   if (!Array.isArray(multimedia)) {
     const m = multimedia as NYTMultimediaObject;
-    const url = m.thumbnail?.url ?? m.default?.url ?? null;
+    const url = m.default?.url ?? null;
     return url ? abs(url) : null;
   }
 

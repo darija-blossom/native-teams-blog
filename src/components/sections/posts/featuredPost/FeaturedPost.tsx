@@ -26,7 +26,7 @@ export default function FeaturedPost({ featuredArticle }: FeaturedPostProps) {
              aspect-[470/400] rounded-[10px] overflow-hidden bg-[#E1E1E1]"
       >
         <Image
-          src="/assets/featured-placeholder.png"
+          src={featuredArticle.multimedia ?? "/placeholder-image.jpg"}
           alt="Featured post image"
           fill
           className="object-cover object-center"

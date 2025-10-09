@@ -15,7 +15,7 @@ import {
 interface PostCardProps {
   title: string;
   description?: string;
-  image?: string;
+  multimedia?: string;
   readTime?: string;
   href?: string;
   className?: string;
@@ -24,7 +24,7 @@ interface PostCardProps {
 export default function PostCard({
   title,
   description,
-  image = "/assets/featured-placeholder.png",
+  multimedia,
   readTime = "6 min read",
   href = "#",
   className,
@@ -42,7 +42,7 @@ export default function PostCard({
       <CardHeader className="p-0">
         <div className="relative w-full aspect-[4/3] bg-[#E1E1E1] max-h-[221px]">
           <Image
-            src={image}
+            src={multimedia || "/assets/featured-placeholder.png"}
             alt={title}
             fill
             className="object-cover"
